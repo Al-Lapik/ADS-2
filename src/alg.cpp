@@ -4,10 +4,12 @@
 
 
 double pown(double value, uint16_t n) {
-  uint16_t pow = value;
+  if (n == 0)
+    return 1;
+  double res = value;
   for (uint16_t i = 2; i <= n; i++)
-    pow *= value;
-  return pow;
+    res *= value;
+  return res;
 }
 
 uint64_t fact(uint16_t n) {
@@ -29,11 +31,13 @@ double expn(double x, uint16_t count) {
 double sinn(double x, uint16_t count) {
   if (count == 0)
     return 0;
-  return pown(-1.0, count - 1) * calcItem(x, 2 * count - 1) + sinn(x, count - 1);
+  return
+    pown(-1.0, count - 1) * calcItem(x, 2 * count - 1) + sinn(x, count - 1);
 }
 
 double cosn(double x, uint16_t count) {
   if (count == 0)
     return 0;
-  return pown(-1.0, count - 1) * calcItem(x, 2 * count - 2) + cosn(x, count - 1);
+  return
+    pown(-1.0, count - 1) * calcItem(x, 2 * count - 2) + cosn(x, count - 1);
 }
